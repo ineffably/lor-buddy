@@ -1,6 +1,6 @@
 # LOR BUDDY
 
-See LorBuddy in action running on github pages here
+[See LorBuddy in action running on github pages here](https://ineffably.github.io/lor-buddy/)
 
 ## Why?
 
@@ -16,7 +16,7 @@ MVP should be a basic library filter with cards rendered. Mature product should 
 
 ## PLAY WITH IT 
 
-Although it's running on github pages, you can also clone and run it on your own device. 
+Although it's [running on github pages](https://ineffably.github.io/lor-buddy/), you can also clone and run it on your own device. 
 
 ```
 git clone git@github.com:ineffably/lor-buddy.git && cd lor-buddy
