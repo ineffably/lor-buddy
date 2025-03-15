@@ -4,7 +4,6 @@ import { LorCard } from './lor-types';
 export interface AppState {
   isLoaded?: boolean;
   cardData?: CardData;
-  filteredCardData?: any;
 }
 
 // add more action types here for new application state opperations

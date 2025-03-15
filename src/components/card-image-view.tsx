@@ -6,14 +6,19 @@ export interface CardImageViewProps {
   scale?: number;
 }
 
+// known size; no need to query naturalwidth and height during image onLoad
+const naturalSize = { 
+  width: 680, 
+  height: 1024 
+};
+
 export const CardImageView = ({ card, scale = 0.4 }: CardImageViewProps) => {
   return (
     <Image 
       src={card.assets[0].gameAbsolutePath} 
-      onLoad={ev => {
-        const image = ev.target as HTMLImageElement
-        image.style.width = `${image.naturalWidth * scale}px`
-        image.style.height = `${image.naturalHeight * scale}px`
-      }} />
+      alt={card.name}
+      key={card.cardCode}
+      style={{ width: `${naturalSize.width * scale}px`, height: `${naturalSize.height * scale}px` }}
+    />
   )
 }

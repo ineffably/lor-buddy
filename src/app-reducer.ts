@@ -33,8 +33,7 @@ export const appReducer = (
       return persistState({
         ...lastState,
         cardData: {
-          ...lastState.cardData, 
-          ...{ filteredCardData }
+          ...lastState.cardData, ...{ filteredCardData }
         },
       });
 
