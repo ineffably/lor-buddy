@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react"
-import { rootDargonData } from "./config";
-import { Tabs } from "antd";
-import { AppContext } from "./state-provider";
-import { CardData } from "./types/app-types";
-import { LorCard } from "./types/lor-types";
-import { Explore } from "./explore";
+import { useContext, useEffect } from 'react'
+import { rootDargonData } from './config';
+import { AppContext } from './state-provider';
+import { CardData } from './types/app-types';
+import { LorCard } from './types/lor-types';
+import { Explore } from './components/explore';
+import 'antd/lib/style/reset.css';
 import './app.css'
 
 const excludeKeys = ['metadata', 'globals-en_us'];
@@ -16,9 +16,13 @@ export const App = () => {
     (async () => {
       const dragonData = await (await fetch(`${rootDargonData}/data/card-sets.json`)).json();
       const allCardData = Object.entries(dragonData)
-        .filter(([key]) => !excludeKeys.includes(key))
-        .map(([key, v]: [string, LorCard]) => ({ ...v, ...{ setkey: key } }))
-        .flat();
+        .filter(
+          ([key]) => !excludeKeys.includes(key)
+        )
+        .map(([key, cards]: [string, LorCard[]]) => (
+          cards.map((card) => ({ ...card, setkey: key }))
+        ))
+        .flat()
 
       dispatch({ type: 'Loaded', payload: { isLoaded: true } });
       dispatch({
@@ -31,15 +35,6 @@ export const App = () => {
   }, [])
 
   return (
-    <Tabs
-      size="small"
-      items={[
-        {
-          label: 'Explore',
-          key: 'explore',
-          children: <Explore />
-        }
-      ]}
-    />
+    <Explore />
   )
 }
