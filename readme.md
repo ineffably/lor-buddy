@@ -19,9 +19,12 @@ MVP should be a basic library filter with cards rendered. Mature product should 
 Although it's running on github pages, you can also clone and run it on your own device. 
 
 ```
-
+git clone git@github.com:ineffably/lor-buddy.git && cd lor-buddy
+npm ci
+npm run local
 ```
 
+Point your best local browser here http://localhost:8888/
 
 ## PROCESS
 
