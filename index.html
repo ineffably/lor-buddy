@@ -3,6 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <title>LOR BUDDY: Explore the possibilities of Runeterra</title>
+  <script>
+    window.addEventListener('load', function () {
+      // this allows us to load the bundle if it's not already loaded. 
+      // I do this for rendering on github pages with html-webpack-plugin
+      // index.ts sets appLoaded, and if it's not set, we load the bundle.
+      if (!window.appLoaded) {
+        const el = document.createElement('script');
+        el.defer = true;
+        el.src = 'lib/index.js?v=' + Date.now();
+        document.body.appendChild(el);
+      }
+    });
+  </script>
 </head>
 <body>
   <div id="app-root"></div>  
