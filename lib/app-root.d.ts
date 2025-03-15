@@ -1,1 +1,1 @@
-export declare const AppRoot: () => any;
+export declare const AppRoot: () => import("react/jsx-runtime").JSX.Element;
