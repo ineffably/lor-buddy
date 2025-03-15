@@ -14,9 +14,18 @@ Candidly I'm also looking for some ways of demonstrating my React and TypeScript
 
 MVP should be a basic library filter with cards rendered. Mature product should be an LoR **card library query monster** with stats and deck builder and viewer. I'd eventually like to re-create this as a webgl based renderer so have less restrictions on rendering.
 
+## PLAY WITH IT 
+
+Although it's running on github pages, you can also clone and run it on your own device. 
+
+```
+
+```
+
+
 ## PROCESS
 
-I'm already automating the process of gathering the card sets from the [RIOT's Dragon Data](https://developer.riotgames.com/docs/lor) here in [dargondata repo](https://github.com/ineffably/dargondata), which yes is named appropriotly *Dargon Data!*. Please check it out.
+I'm already automating the process of gathering the card sets from the [RIOT's Dragon Data](https://developer.riotgames.com/docs/lor) here in [dargondata repo](https://github.com/ineffably/dargondata), which yes is named appropriotly *Dargon Data!*. Please check it out. I'll be using the images provided by the data due to the amount of requests that would incure on github pages. (would introduce that once better tested)
 
 I'll be using React and [antd (ant design)](https://ant.design/docs/spec/introduce) as I really like their [TypeScript backed components](https://ant.design/components/overview/), they are simple, they don't play games, they are easy to extend and customize and best of all, they have a lot of great data sifting features built in where it counts.
 
@@ -26,3 +35,8 @@ Wait a minute. I'll revisit my value distribution component logic that I wrote a
 
 *I did not get around to publishing it, but, thats my prototype which is in that old codebase I said I wasn't going to look at. heh.*
 
+## Disclaimer
+
+THE PROGRAM IS PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY, NONINFRINGMENT, OR OF FITNESS FOR A PARTICULAR PURPOSE. LICENSOR DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE PROGRAM WILL MEET YOUR REQUIREMENTS OR THAT OPERATION WILL BE UNINTERRUPTED OR ERROR FREE. LICENSOR MAKES NO WARRANTIES RESPECTING ANY HARM THAT MAY BE CAUSED BY MALICIOUS USE OF THIS SOFTWARE. LICENSOR FURTHER EXPRESSLY DISCLAIMS ANY WARRANTY OR REPRESENTATION TO AUTHORIZED USERS OR TO ANY THIRD PARTY.
+
+LOR BUDDY isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
