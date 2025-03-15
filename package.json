@@ -1,6 +1,7 @@
 {
   "name": "lor-buddy",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "description": "LOR BUDDY is an card game deck builder for Legends of Runeterra",
   "main": "lib/index.js",
   "scripts": {
