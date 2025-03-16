@@ -4,7 +4,7 @@ import { AppContext } from './state-provider';
 import { CardData } from './types/app-types';
 import { LorCard } from './types/lor-types';
 import { Explore } from './components/explore';
-import 'antd/lib/style/reset.css';
+import 'antd/dist/reset.css';
 import './app.css'
 
 const excludeKeys = ['metadata', 'globals-en_us'];

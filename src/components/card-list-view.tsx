@@ -1,4 +1,4 @@
-import { Card, Empty, Pagination } from 'antd'
+import { Card, Empty, Pagination, Space, Typography } from 'antd'
 import { useContext, useState } from 'react';
 import { AppContext } from '../state-provider'
 import { CardImageView } from './card-image-view';
@@ -9,7 +9,7 @@ export const CardListView = () => {
 
   const [pageSize, setPageSize] = useState<number>(20);
   const [pageNum, setPageNum] = useState<number>(1);
-  
+
   if (!filteredCardData) {
     return <div>Loading...</div>
   }
@@ -29,16 +29,25 @@ export const CardListView = () => {
   }
 
   return (
-    <Card>
+    <Card
+      title={
+        <Space>
+          <Typography.Text>Search Results: ({filteredCardData.length} cards) </Typography.Text>
+        </Space>
+      }>
       <TopBottomPagination />
-      {filteredCardData.length === 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={`No cards found with that query`} />}      
-      {filteredCardData.slice((pageNum - 1) * pageSize, pageNum * pageSize).map((card, index) => {
-        return <CardImageView
-          card={card}
-          key={index}
-        />
-      })}
+      {filteredCardData.length === 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={`No cards found with that query`} />}
+      <div className="list-cards">
+        {filteredCardData.slice((pageNum - 1) * pageSize, pageNum * pageSize).map((card, index) => {
+          return (
+            <CardImageView
+              card={card}
+              key={index}
+            />
+          )
+        })}
+      </div>
       <TopBottomPagination />
-    </Card>
+    </Card >
   )
 }
