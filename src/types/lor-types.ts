@@ -23,7 +23,7 @@ export interface LorCard {
   rarityRef?:             RarityRef;
   subtypes?:              string[];
   supertype?:             Supertype;
-  type?:                  Type;
+  type?:                  CardType;
   collectible?:           boolean;
   set?:                   Set;
   formats?:               Format[];
@@ -64,81 +64,14 @@ export interface Asset {
   fullAbsolutePath?: string;
 }
 
-export enum FormatRef {
-  ClientFormatsEternalName = "client_Formats_Eternal_name",
-  ClientFormatsStandardName = "client_Formats_Standard_name",
-}
 
-export enum Format {
-  Eternal = "Eternal",
-  Standard = "Standard",
-}
-
-export enum Rarity {
-  Champion = "Champion",
-  Common = "COMMON",
-  Epic = "EPIC",
-  None = "None",
-  Rare = "RARE",
-}
-
-export enum RarityRef {
-  Champion = "Champion",
-  Common = "Common",
-  Epic = "Epic",
-  None = "None",
-  Rare = "Rare",
-}
-
-export enum RegionRef {
-  BandleCity = "BandleCity",
-  Bilgewater = "Bilgewater",
-  Demacia = "Demacia",
-  Freljord = "Freljord",
-  Ionia = "Ionia",
-  Noxus = "Noxus",
-  PiltoverZaun = "PiltoverZaun",
-  ShadowIsles = "ShadowIsles",
-  Shurima = "Shurima",
-  Targon = "Targon",
-}
-
-export enum Region {
-  BandleCity = "Bandle City",
-  Bilgewater = "Bilgewater",
-  Demacia = "Demacia",
-  Freljord = "Freljord",
-  Ionia = "Ionia",
-  Noxus = "Noxus",
-  PiltoverZaun = "Piltover & Zaun",
-  ShadowIsles = "Shadow Isles",
-  Shurima = "Shurima",
-  Targon = "Targon",
-}
-
-export enum Set {
-  Set1 = "Set1",
-  Set2 = "Set2",
-  Set3 = "Set3",
-  Set4 = "Set4",
-}
-
-export enum SpellSpeed {
-  Burst = "Burst",
-  Empty = "",
-  Fast = "Fast",
-  Slow = "Slow",
-}
-
-export enum Supertype {
-  Champion = "Champion",
-  Empty = "",
-}
-
-export enum Type {
-  Ability = "Ability",
-  Landmark = "Landmark",
-  Spell = "Spell",
-  Trap = "Trap",
-  Unit = "Unit",
-}
+export type FormatRef = "client_Formats_Eternal_name" | "client_Formats_Standard_name";
+export type Format = "Eternal" | "Standard";
+export type Rarity = "Champion" | "COMMON" | "EPIC" | "None" | "RARE";
+export type RarityRef = "Champion" | "Common" | "Epic" | "None" | "Rare";
+export type RegionRef = "BandleCity" | "Bilgewater" | "Demacia" | "Freljord" | "Ionia" | "Noxus" | "PiltoverZaun" | "ShadowIsles" | "Shurima" | "Targon";
+export type Region = "Bandle City" | "Bilgewater" | "Demacia" | "Freljord" | "Ionia" | "Noxus" | "Piltover & Zaun" | "Shadow Isles" | "Shurima" | "Targon";
+export type Set = "Set1" | "Set2" | "Set3" | "Set4";
+export type SpellSpeed = "Burst" | "Fast" | "Slow" | "";
+export type Supertype = "Champion" | "Landmark" | "Spell" | "Trap" | "Unit" | "";
+export type CardType = "Ability" | "Landmark" | "Spell" | "Trap" | "Unit";

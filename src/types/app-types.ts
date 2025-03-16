@@ -17,10 +17,9 @@ export interface CardData {
 
 export interface LorCardDataReport {
   allCards: LorCard[];
-  cardsByCardCode: Record<string, LorCard>;
-  indexedByKeywords: Record<string, LorCard[]>;
-  indexedByRegion: Record<string, LorCard[]>;
-  indexedByType: Record<string, LorCard[]>;
+  cardsByCode: Record<string, LorCard>;
+  cardsByRegion: Record<string, LorCard[]>;
+  cardsByType: Record<string, LorCard[]>;
 }
 
 // add more action types here for new application state opperations
