@@ -1,4 +1,5 @@
 import type { AppState, ReducerActions } from "./types/app-types";
+import { createIndices } from './utils/carddata-indices';
 
 const persistState = (state: AppState) => {
   // this allows us to persist selected state values to local storage
@@ -24,17 +25,19 @@ export const appReducer = (
       });
     case 'SetCardData':
       const { cardData } = payload;
+      const cardReport = createIndices(cardData.allCardData || []);
       return persistState({
         ...lastState,
-        ...{ cardData }
+        ...{ cardData, cardReport }
       });
     case 'SetFilteredCardData':
+      // when we get a filtered card value in, I'm going to auto-magically update the report.
       const { filteredCardData } = payload;
       return persistState({
         ...lastState,
         cardData: {
           ...lastState.cardData, ...{ filteredCardData }
-        },
+        }
       });
 
     default: {

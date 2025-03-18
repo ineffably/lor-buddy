@@ -16,6 +16,7 @@ body {
 }
 
 .card-image {
+  cursor: pointer;
   opacity: 0;
   border-radius: 10px;
   margin: 10px;
@@ -27,8 +28,40 @@ body {
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-  /* animation duration is added in the component style atm */
+  /* animation duration is randomized in the component atm */
 	/* animation-duration: 0.35s; */
+}
+
+.zoom-in {
+  animation-name: zoomIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.05s;
+}
+
+.zoom-out {
+  animation-name: zoomOut;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.05s;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 
 @keyframes fadeInOpacity {

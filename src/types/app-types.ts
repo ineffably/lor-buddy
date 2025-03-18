@@ -6,8 +6,8 @@ export interface AppState {
   isLoaded?: boolean;
   cardData?: CardData;
   query?: QueryMonster;
-  cardReport?: LorCardDataReport;
-  filteredReport?: LorCardDataReport;
+  cardReport?: LorCardsDataReport;
+  filteredReport?: LorCardsDataReport;
 }
 
 export interface CardData {
@@ -15,11 +15,10 @@ export interface CardData {
   filteredCardData: LorCard[];
 }
 
-export interface LorCardDataReport {
-  allCards: LorCard[];
-  cardsByCode: Record<string, LorCard>;
-  cardsByRegion: Record<string, LorCard[]>;
-  cardsByType: Record<string, LorCard[]>;
+export interface LorCardsDataReport {
+  cardsByCode: Record<keyof LorCard, LorCard>;
+  codesBy: Record<keyof LorCard, Record<string, string[]>>;
+  allOf: Record<keyof LorCard, string[]>;
 }
 
 // add more action types here for new application state opperations

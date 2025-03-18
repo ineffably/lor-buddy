@@ -1,11 +1,13 @@
-import { LorCard } from '../types/lor-types';
+import { LorCard, RegionRef } from '../types/lor-types';
 import { isInField } from './data-utils';
 
 export interface QueryMonster {
   queryText: string;
   keywords: string[];
-  regions: string[];
+  regions: RegionRef[];
   types: string[];
+  onlyCollectible: boolean;
+  rarity: string[];
 }
 
 const searchCardFields = {
@@ -15,9 +17,21 @@ const searchCardFields = {
 } as unknown as keyof LorCard;
 
 export function queryCards(cardList: LorCard[], queryMonster: QueryMonster){
-  const { queryText } = queryMonster;
+  const {
+    onlyCollectible = true, 
+    queryText = '',
+    regions = [],
+    rarity = [],
+  } = queryMonster;
   
   const filteredCardData = cardList.filter((card) => {
+    if(onlyCollectible && !card.collectible) return false;
+    if(rarity.length > 0 && !rarity.includes(card.rarityRef)) return false;
+    if(regions.length > 0 && regions.filter(
+      region => card.regionRefs.includes(region)
+    ).length === 0){
+      return false;
+    }
     const result = [];
     // silly, I would just return true, but, I have plans for the 'field' value
     Object.keys(searchCardFields).forEach((field: keyof LorCard) => result.push(
