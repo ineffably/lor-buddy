@@ -1,9 +1,10 @@
 import { useContext, useEffect } from 'react'
-import { rootDargonData } from './config';
+import { Explore } from '../components/explore';
+import { rootDargonData } from '../config';
+import { CardData } from '../types/app-types';
+import { LorCard } from '../types/lor-types';
 import { AppContext } from './state-provider';
-import { CardData } from './types/app-types';
-import { LorCard } from './types/lor-types';
-import { Explore } from './components/explore';
+
 import 'antd/dist/reset.css';
 import './app.css'
 

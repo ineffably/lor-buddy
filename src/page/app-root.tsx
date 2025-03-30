@@ -1,6 +1,7 @@
-import { StateProvider } from './state-provider'
-import { App } from './app'
+
 import { ConfigProvider, theme } from 'antd'
+import { StateProvider } from './state-provider';
+import { App } from './app';
 
 export const AppRoot = () => {
   // yah we can honor the window event if the mode changes, but, that's complicated and low ROI.

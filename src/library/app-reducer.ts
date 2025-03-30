@@ -1,5 +1,5 @@
-import type { AppState, ReducerActions } from "./types/app-types";
-import { createIndices } from './utils/carddata-indices';
+import type { AppState, ReducerActions } from "../types/app-types";
+import { createIndices } from './carddata-indices';
 
 const persistState = (state: AppState) => {
   // this allows us to persist selected state values to local storage

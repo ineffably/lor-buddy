@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { LorCard } from '../types/lor-types';
-import { randomInt } from '../utils/data-utils';
+import { randomInt } from '../library/data-utils';
 
 export interface CardImageViewProps {
   card: LorCard;

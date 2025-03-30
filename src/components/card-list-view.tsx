@@ -1,7 +1,7 @@
 import { Card, Empty, Pagination, Space, Typography } from 'antd'
 import { useContext, useState } from 'react';
-import { AppContext } from '../state-provider'
 import { CardImageView } from './card-image-view';
+import { AppContext } from '../page/state-provider';
 
 export const CardListView = () => {
   const { state } = useContext(AppContext);

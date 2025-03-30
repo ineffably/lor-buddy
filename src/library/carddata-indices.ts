@@ -11,7 +11,8 @@ export function createIndices(allCards: LorCard[]): LorCardsDataReport {
     ['regionRefs', 'regions'],
     ['keywordRefs', 'keywords'],
     ['formatRefs', 'formats']
-  ]
+  ];
+  
   const emptyResult = {
     cardsByCode: {},
     codesBy: {},

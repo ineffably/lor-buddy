@@ -1,6 +1,6 @@
 import type { Dispatch } from 'react';
 import { LorCard } from './lor-types';
-import { QueryMonster } from '../utils/query-cards';
+import { QueryMonster } from '../library/query-cards';
 
 export interface AppState {
   isLoaded?: boolean;

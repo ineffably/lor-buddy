@@ -1,9 +1,8 @@
-import { Input, Select, Space, Switch, Typography } from 'antd';
-import { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../state-provider';
-import { queryCards, QueryMonster } from '../utils/query-cards';
+import { Select, Space, Typography, Switch, Input } from 'antd';
+import { useContext, useState, useEffect } from 'react';
+import { queryCards, QueryMonster } from '../library/query-cards';
+import { AppContext } from '../page/state-provider';
 
-// rarity list is a known terse quantity; 
 // and I don't want to assign numeric weight to a simple thing.
 const manualRarityList = ['Common', 'Rare', 'Epic', 'Champion'];
 
