@@ -17,6 +17,7 @@ const cleanDescription = (description: string): string => {
 
 const getStyle = () => ({
   position: 'absolute',
+  boxShadow: 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px',
   top: `${window.innerHeight / 50}px`,
   left: `${window.innerWidth / 2 - cardDetailsSize.width / 2}px`,
   width: `${cardDetailsSize.width}px`,
@@ -59,7 +60,7 @@ export const CardDetails = ({ cardCode }: CardDetailsProps) => {
   if (!cardProps) return (<div>loading...</div>);
 
   return (
-    <div style={outerStyle}>
+    <div style={{...outerStyle }}>
       <Card
         size="small"
         title={
@@ -73,8 +74,7 @@ export const CardDetails = ({ cardCode }: CardDetailsProps) => {
           }
         }} // remove padding to fit the image better
         style={{
-          height: outerStyle.height,
-          boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px'
+          height: 'auto',
         }}
         extra={<Link href='/'>close</Link>}
       >
