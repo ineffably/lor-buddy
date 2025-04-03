@@ -1,12 +1,12 @@
 import { useContext, useEffect } from 'react'
 import { Explore } from '../components/explore';
-import { rootDargonData } from '../config';
 import { CardData } from '../types/app-types';
 import { LorCard } from '../types/lor-types';
 import { AppContext } from './state-provider';
 
 import 'antd/dist/reset.css';
 import './app.css'
+import { rootDargonData } from '../library/config';
 
 const excludeKeys = ['metadata', 'globals-en_us'];
 
@@ -34,7 +34,7 @@ export const App = () => {
       });
     })();
   }, [])
-
+  
   return (
     <Explore />
   )

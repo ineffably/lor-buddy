@@ -48,7 +48,7 @@ export function createIndices(allCards: LorCard[]): LorCardsDataReport {
     return acc;
   }, emptyResult)
 
-  const fields = ['type', 'regions', 'keywords', 'formats', 'rarity', 'rarityRef', 'artistName', 'setkey', 'cost', 'attack', 'health'];
+  const fields = ['name', 'type', 'regions', 'keywords', 'formats', 'rarity', 'rarityRef', 'artistName', 'setkey', 'cost', 'attack', 'health'];
   // create a list of all the field values encountered for field "symbols"
   fields.forEach((field) => {
     result.allOf[field] = Object.keys(result.codesBy[field])

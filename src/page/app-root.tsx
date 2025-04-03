@@ -2,6 +2,8 @@
 import { ConfigProvider, theme } from 'antd'
 import { StateProvider } from './state-provider';
 import { App } from './app';
+import { useHashLocation } from 'wouter/use-hash-location';
+import { Router } from 'wouter';
 
 export const AppRoot = () => {
   // yah we can honor the window event if the mode changes, but, that's complicated and low ROI.
@@ -11,11 +13,13 @@ export const AppRoot = () => {
   return (
     <StateProvider>
       <ConfigProvider theme={{
-        algorithm: windowQuery.matches ? 
-          theme.darkAlgorithm : 
+        algorithm: windowQuery.matches ?
+          theme.darkAlgorithm :
           theme.defaultAlgorithm
       }}>
-        <App />
+        <Router hook={useHashLocation}>
+          <App />
+        </Router>
       </ConfigProvider>
     </StateProvider>
   )

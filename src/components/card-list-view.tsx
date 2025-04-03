@@ -1,7 +1,9 @@
 import { Card, Empty, Pagination, Space, Typography } from 'antd'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CardImageView } from './card-image-view';
 import { AppContext } from '../page/state-provider';
+import { CardDetails } from './card-details';
+import { useRoute } from 'wouter';
 
 export const CardListView = () => {
   const { state } = useContext(AppContext);
@@ -9,6 +11,30 @@ export const CardListView = () => {
 
   const [pageSize, setPageSize] = useState<number>(20);
   const [pageNum, setPageNum] = useState<number>(1);
+  const [match, params] = useRoute("/card/:cardidenty");
+  const [cardCode, setCardcode] = useState<string>('');
+
+  useEffect(() => {
+    if (!match || !params) {
+      setCardcode(''); // clear card code if no match found
+      return;
+    };
+
+    const cardIdentifier = (params as any)?.cardidenty || '';
+    if (cardIdentifier && state?.cardReport) {
+      const byName = state.cardReport.codesBy.name?.[cardIdentifier];
+      const byCode = state.cardReport.cardsByCode?.[cardIdentifier];
+
+      if (byName && byName.length > 0) {
+        setCardcode(state.cardReport.cardsByCode[byName[0]].cardCode);
+      }
+
+      if (byCode) {
+        setCardcode(byCode.cardCode); // directly set by card code if it exists
+      }
+
+    }
+  }, [match, params])
 
   if (!filteredCardData) {
     return <div>Loading...</div>
@@ -48,6 +74,7 @@ export const CardListView = () => {
         })}
       </div>
       <TopBottomPagination />
+      {cardCode && <CardDetails cardCode={cardCode} />}
     </Card >
   )
 }
