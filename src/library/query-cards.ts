@@ -22,6 +22,7 @@ export function queryCards(cardList: LorCard[], queryMonster: QueryMonster){
     queryText = '',
     regions = [],
     rarity = [],
+    types = [],
   } = queryMonster;
   
   const filteredCardData = cardList.filter((card) => {
@@ -29,6 +30,11 @@ export function queryCards(cardList: LorCard[], queryMonster: QueryMonster){
     if(rarity.length > 0 && !rarity.includes(card.rarityRef)) return false;
     if(regions.length > 0 && regions.filter(
       region => card.regionRefs.includes(region)
+    ).length === 0){
+      return false;
+    }
+    if(types.length > 0 && types.filter(
+      type => card.type === type
     ).length === 0){
       return false;
     }

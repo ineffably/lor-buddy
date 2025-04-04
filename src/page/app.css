@@ -47,6 +47,24 @@ body {
   animation-duration: 0.05s;
 }
 
+.card-details-body {
+  animation-name: zoomBackground;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 240s;
+}
+
+@keyframes zoomBackground {
+  0% {
+    background-size: 100%;
+    background-position: left center;
+  }
+  100% {
+    background-size: 200%;
+    background-position: right center;
+  }
+}
+
 @keyframes zoomOut {
   0% {
     transform: scale(1.2);
@@ -72,4 +90,19 @@ body {
 	100% {
 		opacity: 1;
 	}
+}
+
+@keyframes expandBackground {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.expanding-background {
+  background-repeat: no-repeat;
+  background-position: left center;
+  animation: expandBackground 2s ease-out forwards;
 }

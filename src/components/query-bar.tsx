@@ -11,6 +11,7 @@ export const QueryBar = () => {
   const [queryText, setQueryText] = useState<string>('');
   const [ofRegions, setRegions] = useState<string[]>([]);
   const [ofRarity, setRarity] = useState<string[]>([]);
+  const [ofType, setType] = useState<string[]>([]);
   const [onlyCollectible, setOnlyCollectibles] = useState<boolean>(true);
   const { allCardData } = state?.cardData || {};
 
@@ -21,6 +22,7 @@ export const QueryBar = () => {
         queryText,
         regions: ofRegions,
         rarity: ofRarity,
+        types: ofType,
         onlyCollectible
       } as QueryMonster);
 
@@ -28,7 +30,9 @@ export const QueryBar = () => {
       type: 'SetFilteredCardData',
       payload: { filteredCardData },
     });
-  }, [queryText, ofRegions, onlyCollectible, allCardData, ofRarity]);
+  }, [queryText, ofRegions, onlyCollectible, allCardData, ofRarity, ofType]);
+
+  console.log('state.cardReport.allOf.type', state.cardReport?.allOf?.type);
 
   return (
     <div>
@@ -61,6 +65,20 @@ export const QueryBar = () => {
               allowClear
               style={{ width: '300px' }}
               placeholder="Select a rarity"
+            />
+
+            <Select
+              options={state.cardReport.allOf.type.filter(
+                typeName => typeName !== 'Ability' || !onlyCollectible
+              ).map(
+                (cardTypeName) => ({ label: cardTypeName, value: cardTypeName })
+              )}
+              onChange={value => setType(value as string[])}
+              value={ofType}
+              mode="multiple"
+              allowClear
+              style={{ width: '300px' }}
+              placeholder="Select a type"
             />
 
             <Space>

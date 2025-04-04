@@ -2,7 +2,7 @@ import { Card, Empty, Pagination, Space, Typography } from 'antd'
 import { useContext, useEffect, useState } from 'react';
 import { CardImageView } from './card-image-view';
 import { AppContext } from '../page/state-provider';
-import { CardDetails } from './card-details';
+import { CardDetailsLayout } from './card-details-layout';
 import { useRoute } from 'wouter';
 
 export const CardListView = () => {
@@ -74,7 +74,7 @@ export const CardListView = () => {
         })}
       </div>
       <TopBottomPagination />
-      {cardCode && <CardDetails cardCode={cardCode} />}
+      {cardCode && <CardDetailsLayout cardCode={cardCode} />}
     </Card >
   )
 }

@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const outDir = 'lib';
+const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
 
 module.exports = (env, argv) => {
   const { mode = 'development' } = argv;
@@ -23,6 +24,31 @@ module.exports = (env, argv) => {
         directory: path.join(__dirname, './'),
         publicPath: '/'
       },
+    },
+    externals: {
+      "react": "React",
+      "react-dom": "ReactDOM"
+      // 'react': {
+      //   commonjs: 'react',
+      //   commonjs2: 'react',
+      //   amd: 'react',
+      //   root: 'React'
+      // },
+      // 'react-dom': {
+      //   commonjs: 'react-dom',
+      //   commonjs2: 'react-dom',
+      //   amd: 'react-dom',
+      //   root: 'ReactDOM'
+      // }
+    },
+    stats: {
+      // required
+      assets: true,
+      chunks: true,
+      modules: true,
+      // optional
+      builtAt: true,
+      hash: true
     },
     module: {
       noParse: [require.resolve("typescript/lib/typescript.js")],
@@ -60,13 +86,14 @@ module.exports = (env, argv) => {
       ],
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin({/* options: see below */})],
+      plugins: [new TsconfigPathsPlugin({/* options: see below */ })],
       extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, './index.html')
       }),
+      new BundleStatsWebpackPlugin()
     ]
   })
 }
