@@ -12,3 +12,4 @@ export declare const cardDetailsSize: {
     height: number;
 };
 export declare const rootDargonData = "https://ineffably.github.io/dargondata/";
+export declare const excludeKeysFromCardIndex: string[];
