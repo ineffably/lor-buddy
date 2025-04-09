@@ -3,12 +3,11 @@ import { Explore } from '../components/explore';
 import { CardData } from '../types/app-types';
 import { LorCard } from '../types/lor-types';
 import { AppContext } from './state-provider';
+import { excludeKeysFromCardIndex, rootDargonData } from '../library/config';
 
+// TODO: using flat css for now; will introduce modules when layout model is more mature
 import 'antd/dist/reset.css';
-import './app.css'
-import { rootDargonData } from '../library/config';
-
-const excludeKeys = ['metadata', 'globals-en_us'];
+import '../app.css' 
 
 export const App = () => {
   const { dispatch } = useContext(AppContext);
@@ -18,7 +17,7 @@ export const App = () => {
       const dragonData = await (await fetch(`${rootDargonData}/data/card-sets.json`)).json();
       const allCardData = Object.entries(dragonData)
         .filter(
-          ([key]) => !excludeKeys.includes(key)
+          ([key]) => !excludeKeysFromCardIndex.includes(key)
         )
         .map(([key, cards]: [string, LorCard[]]) => (
           cards.map((card) => ({ ...card, setkey: key }))

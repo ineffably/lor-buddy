@@ -15,5 +15,5 @@ export const cardDetailsSize = {
   height: (naturalFullArtSize.height * cardDetailScale)
 };
 
-
 export const rootDargonData = 'https://ineffably.github.io/dargondata/'
+export const excludeKeysFromCardIndex = ['metadata', 'globals-en_us'];

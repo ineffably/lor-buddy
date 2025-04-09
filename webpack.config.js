@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const outDir = 'lib';
 const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
+const outDir = 'lib';
 
 module.exports = (env, argv) => {
   const { mode = 'development' } = argv;
@@ -42,16 +41,13 @@ module.exports = (env, argv) => {
       // }
     },
     stats: {
-      // required
       assets: true,
       chunks: true,
       modules: true,
-      // optional
       builtAt: true,
       hash: true
     },
     module: {
-      noParse: [require.resolve("typescript/lib/typescript.js")],
       rules: [
         {
           test: /\.tsx?|.ts?$/,
@@ -70,24 +66,26 @@ module.exports = (env, argv) => {
             {
               loader: 'css-loader',
               options: {
-                modules: true
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: ['postcss-simple-vars', 'postcss-nested'],
+                modules: {
+                  localIdentName: '[name]-[local]-[hash:base64:5]'
                 },
+                importLoaders: 1,
               },
             },
+            // {
+            //   loader: 'postcss-loader',
+            //   options: {
+            //     postcssOptions: {
+            //       plugins: ['postcss-simple-vars', 'postcss-nested'],
+            //     },
+            //   },
+            // },
           ]
         }
       ],
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin({/* options: see below */ })],
-      extensions: ['.tsx', '.ts', '.js']
+      extensions: ['.tsx', '.ts', '.js', '.css']
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -97,3 +95,4 @@ module.exports = (env, argv) => {
     ]
   })
 }
+

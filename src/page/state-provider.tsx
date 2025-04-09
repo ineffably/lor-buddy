@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { createContext, useReducer } from 'react';
 import { appReducer } from '../library/app-reducer';
 import { AppState, ProviderState } from '../types/app-types';
@@ -18,6 +18,9 @@ export const StateProvider = ({ children, initState = emptyState }: StateProvide
   const [state, dispatch] = useReducer(appReducer, {...emptyState, ...initState});
 
   // reminder:  you can drop a useEffect here to update state
+  // useEffect(() => {
+  //   console.log('state', state);
+  // }, [state])
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

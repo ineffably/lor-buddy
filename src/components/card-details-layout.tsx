@@ -14,7 +14,7 @@ const getStyle = () => ({
   position: 'absolute',
   boxShadow: 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px',
   top: `${window.innerHeight / 50}px`,
-  left: `${window.innerWidth / 2 - cardDetailsSize.width / 2}px`,
+  left: `${window.innerWidth / 3 - cardDetailsSize.width / 2}px`,
   width: `${cardDetailsSize.width}px`,
   height: `${cardDetailsSize.height}px`,
   zIndex: 10

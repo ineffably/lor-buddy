@@ -2,6 +2,7 @@ import { Select, Space, Typography, Switch, Input } from 'antd';
 import { useContext, useState, useEffect } from 'react';
 import { queryCards, QueryMonster } from '../library/query-cards';
 import { AppContext } from '../page/state-provider';
+import { CardType } from '../types/lor-types';
 
 // and I don't want to assign numeric weight to a simple thing.
 const manualRarityList = ['Common', 'Rare', 'Epic', 'Champion'];
@@ -12,6 +13,7 @@ export const QueryBar = () => {
   const [ofRegions, setRegions] = useState<string[]>([]);
   const [ofRarity, setRarity] = useState<string[]>([]);
   const [ofType, setType] = useState<string[]>([]);
+  const [ofKeywords, setKeywords] = useState<string[]>([]);
   const [onlyCollectible, setOnlyCollectibles] = useState<boolean>(true);
   const { allCardData } = state?.cardData || {};
 
@@ -23,6 +25,7 @@ export const QueryBar = () => {
         regions: ofRegions,
         rarity: ofRarity,
         types: ofType,
+        keywords: ofKeywords,
         onlyCollectible
       } as QueryMonster);
 
@@ -30,9 +33,8 @@ export const QueryBar = () => {
       type: 'SetFilteredCardData',
       payload: { filteredCardData },
     });
-  }, [queryText, ofRegions, onlyCollectible, allCardData, ofRarity, ofType]);
+  }, [queryText, ofRegions, onlyCollectible, allCardData, ofRarity, ofType, ofKeywords]);
 
-  console.log('state.cardReport.allOf.type', state.cardReport?.allOf?.type);
 
   return (
     <div>
@@ -69,7 +71,7 @@ export const QueryBar = () => {
 
             <Select
               options={state.cardReport.allOf.type.filter(
-                typeName => typeName !== 'Ability' || !onlyCollectible
+                (typeName: CardType) => ((typeName !== 'Ability' && typeName !== 'Trap') || !onlyCollectible)
               ).map(
                 (cardTypeName) => ({ label: cardTypeName, value: cardTypeName })
               )}
@@ -79,6 +81,18 @@ export const QueryBar = () => {
               allowClear
               style={{ width: '300px' }}
               placeholder="Select a type"
+            />
+
+            <Select
+              options={state.cardReport.allOf.keywords.map(
+                (keyword) => ({ label: keyword, value: keyword })
+              )}
+              onChange={value => setKeywords(value as string[])}
+              value={ofKeywords}
+              mode="multiple"
+              allowClear
+              style={{ width: '300px' }}
+              placeholder="Select a keyword"
             />
 
             <Space>

@@ -1,13 +1,11 @@
-import { Flex, Image, List, Space, Table, Typography } from 'antd'
+import { Flex, Image } from 'antd'
 import { LorCard } from '../types/lor-types';
-import { getStyle } from 'antd/es/checkbox/style';
-import { useContext, useState, CSSProperties, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { cardDetailsSize, naturalCardSize } from '../library/config';
 import { AppContext } from '../page/state-provider';
 import { cleanDescription } from '../library/data-utils';
 
-
-export interface CardDetailsBodyProps {
+export interface CardDetailsBodyProps { 
   cardProps: LorCard;
 }
 
@@ -19,20 +17,6 @@ export const CardDetailsBody = ({ cardProps }: CardDetailsBodyProps) => {
   const { state } = useContext(AppContext);
   const ref = useRef<HTMLDivElement>(null);
 
-  const detailsTable = [{
-    label: 'Region',
-    value: cardProps.regions?.join(', ')
-  }, {
-    label: 'Type',
-    value: cardProps.type
-  }, {
-    label: 'Rarity',
-    value: cardProps.rarity
-  }, {
-    label: 'Set',
-    value: cardProps.set
-  }]
-
   return (
     <div
       key={cardProps.cardCode}
@@ -43,10 +27,11 @@ export const CardDetailsBody = ({ cardProps }: CardDetailsBodyProps) => {
         padding: '20px',
         height: `${cardDetailsSize.height}px`, // 50px for the header
         background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), center 0 url(${cardProps.assets[0].fullAbsolutePath}) no-repeat, #000`, // fallback
-        backgroundSize: `contain`,
+        backgroundSize: `contain`
       }}>
       <Flex vertical={true} >
         <Flex vertical={false} style={{ height: `${naturalCardSize.height * cardImageScale}px` }}>
+
           <Image
             src={cardProps.assets[0].gameAbsolutePath}
             style={{ width: `${naturalCardSize.width * cardImageScale}px` }}
@@ -73,8 +58,6 @@ export const CardDetailsBody = ({ cardProps }: CardDetailsBodyProps) => {
             <p style={{ color: '#fff', fontSize: '24px' }}>{cardProps.flavorText}</p>
           </Flex>
         </Flex>
-
-
 
         <Flex vertical={false}>
           {cardProps.associatedCardRefs && cardProps.associatedCardRefs.map(cardRef => {

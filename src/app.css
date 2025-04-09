@@ -13,7 +13,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 95vw;
 }
 
 .card-image {
@@ -33,7 +32,7 @@ body {
 	/* animation-duration: 0.35s; */
 }
 
-.zoom-in {
+/* .zoom-in {
   animation-name: zoomIn;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
@@ -45,7 +44,7 @@ body {
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 0.05s;
-}
+} */
 
 .card-details-body {
   animation-name: zoomBackground;
@@ -53,6 +52,38 @@ body {
   animation-timing-function: linear;
   animation-duration: 240s;
 }
+
+
+.expanding-background {
+  background-repeat: no-repeat;
+  background-position: left center;
+  animation: expandBackground 2s ease-out forwards;
+}
+
+.badgeIconNumberStats .ant-statistic-content {
+  margin: 8px 4px;
+  min-width: 28px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #eee;
+}
+
+.report-card-cost .ant-statistic-content {
+  background-color: #0066b2;
+  color: #fff;
+}
+
+.report-card-health .ant-statistic-content {
+  background-color: #7c0001;
+  color: #fff;
+}
+
+.report-card-attack .ant-statistic-content {
+  background-color: #db5600;
+  color: #fff;
+}
+
 
 @keyframes zoomBackground {
   0% {
@@ -101,8 +132,3 @@ body {
   }
 }
 
-.expanding-background {
-  background-repeat: no-repeat;
-  background-position: left center;
-  animation: expandBackground 2s ease-out forwards;
-}

@@ -56,24 +56,25 @@ export const CardListView = () => {
 
   return (
     <Card
+      style={{ width: '100%' }}
       title={
         <Space>
           <Typography.Text>Search Results: ({filteredCardData.length} cards) </Typography.Text>
         </Space>
       }>
-      <TopBottomPagination />
-      {filteredCardData.length === 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={`No cards found with that query`} />}
-      <div className="list-cards">
-        {filteredCardData.slice((pageNum - 1) * pageSize, pageNum * pageSize).map((card, index) => {
-          return (
-            <CardImageView
-              card={card}
-              key={index}
-            />
-          )
-        })}
-      </div>
-      <TopBottomPagination />
+        <TopBottomPagination />
+        {filteredCardData.length === 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={`No cards found with that query`} />}
+        <div className="list-cards">
+          {filteredCardData.slice((pageNum - 1) * pageSize, pageNum * pageSize).map((card, index) => {
+            return (
+              <CardImageView
+                card={card}
+                key={index}
+              />
+            )
+          })}
+        </div>
+        <TopBottomPagination />
       {cardCode && <CardDetailsLayout cardCode={cardCode} />}
     </Card >
   )

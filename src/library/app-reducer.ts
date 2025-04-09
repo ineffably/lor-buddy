@@ -23,21 +23,27 @@ export const appReducer = (
         ...lastState,
         ...{ isLoaded }
       });
+    
     case 'SetCardData':
       const { cardData } = payload;
       const cardReport = createIndices(cardData.allCardData || []);
+      
       return persistState({
         ...lastState,
-        ...{ cardData, cardReport }
+        ...{ cardData, cardReport, filteredReport: cardReport }
       });
+
     case 'SetFilteredCardData':
       // when we get a filtered card value in, I'm going to auto-magically update the report.
       const { filteredCardData } = payload;
+      const filteredReport = createIndices(filteredCardData);
+
       return persistState({
         ...lastState,
         cardData: {
           ...lastState.cardData, ...{ filteredCardData }
-        }
+        },
+        filteredReport
       });
 
     default: {
