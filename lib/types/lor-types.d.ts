@@ -71,3 +71,27 @@ export type Set = "Set1" | "Set2" | "Set3" | "Set4";
 export type SpellSpeed = "Burst" | "Fast" | "Slow" | "";
 export type Supertype = "Champion" | "Landmark" | "Spell" | "Trap" | "Unit" | "";
 export type CardType = "Ability" | "Landmark" | "Spell" | "Trap" | "Unit";
+export interface CardGlobals {
+    vocabTerms: GlobalTerm[];
+    keywords: GlobalTerm[];
+    regions: GlobalRegion[];
+    spellSpeeds: GlobalTerm[];
+    rarities: GlobalTerm[];
+    sets: GlobalIconEntry[];
+    formats: GlobalIconEntry[];
+    adventureRarities: GlobalIconEntry[];
+}
+export interface GlobalEntry {
+    name: string;
+    nameRef: string;
+}
+export interface GlobalTerm extends GlobalEntry {
+    description: string;
+}
+export interface GlobalRegion extends GlobalEntry {
+    abbreviation: string;
+    iconAbsolutePath: string | null;
+}
+export interface GlobalIconEntry extends GlobalEntry {
+    iconAbsolutePath: string;
+}

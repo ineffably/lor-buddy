@@ -1,5 +1,5 @@
 import type { Dispatch } from 'react';
-import { LorCard } from './lor-types';
+import { LorCard, CardGlobals, GlobalEntry } from './lor-types';
 import { QueryMonster } from '../library/query-cards';
 export interface AppState {
     isLoaded?: boolean;
@@ -7,6 +7,8 @@ export interface AppState {
     query?: QueryMonster;
     cardReport?: LorCardsDataReport;
     filteredReport?: LorCardsDataReport;
+    globals?: CardGlobals;
+    globalsRecords?: Record<string, Record<string, GlobalEntry>>;
 }
 export interface CardData {
     allCardData: LorCard[];
@@ -17,7 +19,7 @@ export interface LorCardsDataReport {
     codesBy: Record<keyof LorCard, Record<string, string[]>>;
     allOf: Record<keyof LorCard, string[]>;
 }
-export type ActionTypes = 'SetFilteredCardData' | 'SetCardData' | 'Loaded';
+export type ActionTypes = 'SetGlobals' | 'SetFilteredCardData' | 'SetCardData' | 'Loaded';
 export interface ReducerActions<T = any> {
     payload: T;
     type: ActionTypes;

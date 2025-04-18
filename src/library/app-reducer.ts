@@ -23,7 +23,14 @@ export const appReducer = (
         ...lastState,
         ...{ isLoaded }
       });
-    
+
+    case 'SetGlobals':
+      const { globals, globalsRecords } = payload;
+      return persistState({
+        ...lastState,
+        ...{ globals, globalsRecords }
+      });
+
     case 'SetCardData':
       const { cardData } = payload;
       const cardReport = createIndices(cardData.allCardData || []);

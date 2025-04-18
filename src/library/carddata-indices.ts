@@ -15,7 +15,6 @@ export function createIndices(allCards: LorCard[]): LorCardsDataReport {
   // storing a lookup by cardcode for instant access to card data
   // and then storing cardcodes instead of cards, 
   // in theory provides less memory necessary for storing indices retrieval
-  
   const emptyResult = {
     cardsByCode: {},
     codesBy: {},

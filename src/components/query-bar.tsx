@@ -44,7 +44,19 @@ export const QueryBar = () => {
             <Select
               options={
                 state.cardReport.allOf.regions.sort().map(
-                  region => ({ label: region, value: region })
+                  region => ({
+                    label: (
+                      <Space>
+                        <img
+                          src={`./assets/icons/${region.toLowerCase()}.png`}
+                          alt={region}
+                          style={{ height: '20px' }}
+                        />
+                        <Typography.Text>{region}</Typography.Text>
+                      </Space>
+                    ),
+                    value: region
+                  })
                 )
               }
               onChange={value => setRegions(value as string[])}
@@ -58,7 +70,19 @@ export const QueryBar = () => {
             <Select
               options={
                 manualRarityList.map(
-                  rarity => ({ label: rarity, value: rarity })
+                  rarity => ({
+                    label: (
+                      <Space>
+                        <img
+                          src={`./assets/icons/${rarity.toLowerCase()}.png`}
+                          alt={rarity}
+                          style={{ height: '20px' }}
+                        />
+                        <Typography.Text>{rarity}</Typography.Text>
+                      </Space>
+                    ),
+                    value: rarity
+                  })
                 )
               }
               onChange={value => setRarity(value as string[])}
@@ -73,7 +97,19 @@ export const QueryBar = () => {
               options={state.cardReport.allOf.type.filter(
                 (typeName: CardType) => ((typeName !== 'Ability' && typeName !== 'Trap') || !onlyCollectible)
               ).map(
-                (cardTypeName) => ({ label: cardTypeName, value: cardTypeName })
+                (cardTypeName) => ({
+                  label: (
+                    <Space>
+                      <img
+                        src={`./assets/icons/${cardTypeName.toLowerCase()}.png`}
+                        alt={cardTypeName}
+                        style={{ height: '20px' }}
+                      />
+                      <Typography.Text>{cardTypeName}</Typography.Text>
+                    </Space>
+                  ),
+                  value: cardTypeName
+                })
               )}
               onChange={value => setType(value as string[])}
               value={ofType}
@@ -85,7 +121,19 @@ export const QueryBar = () => {
 
             <Select
               options={state.cardReport.allOf.keywords.map(
-                (keyword) => ({ label: keyword, value: keyword })
+                (keyword) => ({
+                  label: (
+                    <Space>
+                      <img 
+                        src={`./assets/icons/${keyword.toLowerCase()}.png`} 
+                        alt={keyword}
+                        style={{ height: '20px' }}
+                      />
+                      <Typography.Text>{keyword}</Typography.Text>
+                    </Space>
+                  ),
+                  value: keyword
+                })
               )}
               onChange={value => setKeywords(value as string[])}
               value={ofKeywords}

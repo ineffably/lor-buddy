@@ -1,1 +1,1 @@
-export declare const SimpleTableReport: () => import("react/jsx-runtime").JSX.Element;
+export declare const CardpropCountsReport: () => import("react/jsx-runtime").JSX.Element;

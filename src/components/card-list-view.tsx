@@ -56,10 +56,11 @@ export const CardListView = () => {
 
   return (
     <Card
+      size="small"
       style={{ width: '100%' }}
       title={
         <Space>
-          <Typography.Text>Search Results: ({filteredCardData.length} cards) </Typography.Text>
+          <Typography.Title level={5}>Search Results: ({filteredCardData.length} cards) </Typography.Title>
         </Space>
       }>
         <TopBottomPagination />

@@ -30,6 +30,23 @@ export const CardpropCountsReport = () => {
     }
   }, {} as Record<string, { name: string, count: number }[]>)
 
+  const { globalsRecords } = state;
+
+  const termsForGroups = {
+    keywords: globalsRecords?.keywords,
+    regions: globalsRecords?.regions,
+    spellSpeeds: globalsRecords?.spellSpeeds,
+    rarities: globalsRecords?.rarities,
+    sets: globalsRecords?.sets,
+  }
+
+  const getTooltipTitle = (group: string, name: string) => {
+    const displayName = termsForGroups[group]?.[name]?.name || name;
+    const description = termsForGroups[group]?.[name]?.description || '';
+
+    return description ? `${displayName}: ${description}` : displayName;
+  }
+
   return (
     <div style={{ backgroundColor: '#ccc', padding: '10px', borderRadius: '10px' }}>
       {Object.entries(data).filter(([, stats]) => stats.length > 0).map(([group, stats]) => {
@@ -40,24 +57,24 @@ export const CardpropCountsReport = () => {
             key={group}
             className={`report-card-${group}`}
             style={{ marginBottom: '10px' }}
-            >
+          >
             <div style={{ display: 'flex', flexDirection: 'row', columnGap: '15px', padding: '10px 0 0 0', flexWrap: 'wrap' }}>
               {!numericValueGroups.includes(group) && validStats.map(entry => (
-                <Tooltip title={entry.name} key={entry.name}>
-                  <BadgeIconImage 
-                    src={`./assets/icons/${entry.name.toLowerCase()}.png`} 
-                    count={entry.count} 
-                    overflowCount={999} 
+                <Tooltip title={getTooltipTitle(group, entry.name)} key={entry.name}>
+                  <BadgeIconImage
+                    src={`./assets/icons/${entry.name.toLowerCase()}.png`}
+                    count={entry.count}
+                    overflowCount={999}
                   />
                 </Tooltip>
               ))}
               {numericValueGroups.includes(group) && validStats.map(
-                entry => 
-                  <BadgeIconNumber 
-                    key={entry.name} 
-                    number={entry.name as any} 
-                    count={entry.count} 
-                    overflowCount={999} 
+                entry =>
+                  <BadgeIconNumber
+                    key={entry.name}
+                    number={entry.name as any}
+                    count={entry.count}
+                    overflowCount={999}
                   />
               )}
             </div>

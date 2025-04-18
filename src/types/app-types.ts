@@ -1,5 +1,5 @@
 import type { Dispatch } from 'react';
-import { LorCard } from './lor-types';
+import { LorCard, CardGlobals, GlobalEntry } from './lor-types';
 import { QueryMonster } from '../library/query-cards';
 
 export interface AppState {
@@ -8,6 +8,8 @@ export interface AppState {
   query?: QueryMonster;
   cardReport?: LorCardsDataReport;
   filteredReport?: LorCardsDataReport;
+  globals?: CardGlobals;
+  globalsRecords?: Record<string, Record<string, GlobalEntry>>;
 }
 
 export interface CardData {
@@ -24,6 +26,7 @@ export interface LorCardsDataReport {
 // add more action types here for new application state opperations
 // keeping set card and set filtered distinct for debugability.
 export type ActionTypes =
+  'SetGlobals' |
   'SetFilteredCardData' |   
   'SetCardData' |
   'Loaded';
