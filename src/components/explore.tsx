@@ -3,11 +3,7 @@ import { CardListView } from './card-list-view'
 import { QueryBar } from './query-bar'
 import { useContext, useState } from 'react';
 import { AppContext } from '../page/state-provider';
-import { SimpleTableReport } from './simple-table-report';
-
-export interface ExploreProps {
-  cardIdentifier?: string; // either a cardid or "card name" or a card-name-slug
-}
+import { CardpropCountsReport } from './cardprop-counts-report';
 
 export const Explore = () => {
   const { state } = useContext(AppContext);
@@ -26,7 +22,7 @@ export const Explore = () => {
             </div>
           </Splitter.Panel>
           <Splitter.Panel size={sizes[1]}>
-            <SimpleTableReport />
+            <CardpropCountsReport />
           </Splitter.Panel>
         </Splitter>
       </div>

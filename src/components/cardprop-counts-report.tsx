@@ -7,7 +7,7 @@ import { BadgeIconImage, BadgeIconNumber } from './badge-icon';
 const numericValueGroups = ['attack', 'health', 'cost'];
 const skippedGroups = ['collectible', 'formats', 'rarity'];
 
-export const SimpleTableReport = () => {
+export const CardpropCountsReport = () => {
   const { state } = useContext(AppContext);
   const [filteredReport, setFilteredReport] = useState<LorCardsDataReport | null>(null);
 
@@ -38,21 +38,24 @@ export const SimpleTableReport = () => {
           <Card
             size="small"
             key={group}
-            // title={group.toUpperCase()}
             className={`report-card-${group}`}
             style={{ marginBottom: '10px' }}
             >
             <div style={{ display: 'flex', flexDirection: 'row', columnGap: '15px', padding: '10px 0 0 0', flexWrap: 'wrap' }}>
               {!numericValueGroups.includes(group) && validStats.map(entry => (
                 <Tooltip title={entry.name} key={entry.name}>
-                  <BadgeIconImage src={`./assets/icons/${entry.name.toLowerCase()}.png`} count={entry.count} overflowCount={999} />
+                  <BadgeIconImage 
+                    src={`./assets/icons/${entry.name.toLowerCase()}.png`} 
+                    count={entry.count} 
+                    overflowCount={999} 
+                  />
                 </Tooltip>
               ))}
               {numericValueGroups.includes(group) && validStats.map(
                 entry => 
                   <BadgeIconNumber 
                     key={entry.name} 
-                    number={parseInt(entry.name, 10)} 
+                    number={entry.name as any} 
                     count={entry.count} 
                     overflowCount={999} 
                   />

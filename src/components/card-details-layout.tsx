@@ -6,7 +6,7 @@ import { LorCard } from '../types/lor-types';
 import { cardDetailsSize } from '../library/config';
 import { CardDetailsBody } from './card-details-body';
 
-export interface CardDetailsProps {
+interface CardDetailsProps {
   cardCode: string;
 }
 

@@ -5,7 +5,7 @@ import { cardDetailsSize, naturalCardSize } from '../library/config';
 import { AppContext } from '../page/state-provider';
 import { cleanDescription } from '../library/data-utils';
 
-export interface CardDetailsBodyProps { 
+interface CardDetailsBodyProps { 
   cardProps: LorCard;
 }
 

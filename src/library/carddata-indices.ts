@@ -1,7 +1,7 @@
 import { LorCardsDataReport } from '../types/app-types';
 import { LorCard } from '../types/lor-types';
 
-export const fields = ['name', 'type', 'regions', 'keywords', 'formats', 'rarity', 'rarityRef', 'artistName', 'setkey', 'cost', 'attack', 'health'];
+const fields = ['name', 'type', 'regions', 'keywords', 'formats', 'rarity', 'rarityRef', 'artistName', 'setkey', 'cost', 'attack', 'health'];
 const singleEntryValues = ['artistName', 'type', 'attack', 'health', 'cost', 'name', 'setkey', 'collectible', 'rarity', 'rarityRef'];
 const multiEntryValues = ['regions', 'keywords', 'formats'];
 const multiEntryFields = [
@@ -9,6 +9,8 @@ const multiEntryFields = [
   ['keywordRefs', 'keywords'],
   ['formatRefs', 'formats']
 ];
+const numericValueGroups = ['attack', 'health', 'cost', '10+'];
+
 export function createIndices(allCards: LorCard[]): LorCardsDataReport {
   // storing a lookup by cardcode for instant access to card data
   // and then storing cardcodes instead of cards, 
@@ -43,8 +45,14 @@ export function createIndices(allCards: LorCard[]): LorCardsDataReport {
     singleEntryValues.forEach((cardField) => {
       if(!card[cardField] || excludeCodesByFields.includes(cardField)) return;
       const fieldValue = card[cardField] as string;
-      codesBy[cardField][fieldValue] = codesBy[cardField][fieldValue] || [];
-      codesBy[cardField][fieldValue].push(cardCode);
+      if(numericValueGroups.includes(cardField)) {  
+        const numValue = (parseInt(fieldValue, 10) < 10) ? fieldValue : '10+';
+        codesBy[cardField][numValue] = codesBy[cardField][numValue] || [];
+        codesBy[cardField][numValue].push(cardCode);
+      } else {
+        codesBy[cardField][fieldValue] = codesBy[cardField][fieldValue] || [];
+        codesBy[cardField][fieldValue].push(cardCode);
+      }
     });
 
     return acc;

@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 import { appReducer } from '../library/app-reducer';
 import { AppState, ProviderState } from '../types/app-types';
 
-export const emptyState: AppState = {
+const emptyState: AppState = {
   isLoaded: false,
 }
 

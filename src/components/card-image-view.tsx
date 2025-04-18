@@ -4,7 +4,7 @@ import { randomInt } from '../library/data-utils';
 import { Link } from 'wouter';
 import { naturalCardSize } from '../library/config';
 
-export interface CardImageViewProps {
+interface CardImageViewProps {
   card: LorCard;
   scale?: number;
 }
